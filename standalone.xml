@@ -130,7 +130,7 @@
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:bean-validation:1.0"/>
         <subsystem xmlns="urn:jboss:domain:datasources:4.0">
-            <datasources>
+           <datasources>
                 <datasource jndi-name="java:jboss/datasources/ExampleDS" pool-name="ExampleDS" enabled="true" use-java-context="true">
                     <connection-url>jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</connection-url>
                     <driver>h2</driver>
@@ -139,9 +139,49 @@
                         <password>sa</password>
                     </security>
                 </datasource>
+                <datasource jta="false" jndi-name="java:/jboss/jdbc/oak" pool-name="oak" enabled="true" use-ccm="true">
+                    <connection-url>jdbc:postgresql://postgresql-94.centos7.jarvis-sit.svc.cluster.local:5432/oak</connection-url>
+                    <driver-class>org.postgresql.Driver</driver-class>
+                    <driver>postgresql</driver>
+                    <security>
+                        <user-name>admin</user-name>
+                        <password>password</password>
+                    </security>
+                    <validation>
+                        <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLValidConnectionChecker"/>
+                        <background-validation>true</background-validation>
+                        <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLExceptionSorter"/>
+                    </validation>
+                </datasource>
+                <xa-datasource jndi-name="java:jboss/jdbc/oak" pool-name="PostgresoakXADS">
+                    <xa-datasource-property name="ServerName">
+                        postgresql-94.centos7.jarvis-sit.svc.cluster.local
+                    </xa-datasource-property>
+                    <xa-datasource-property name="PortNumber">
+                        5432
+                    </xa-datasource-property>
+                    <xa-datasource-property name="DatabaseName">
+                        oak
+                    </xa-datasource-property>
+                    <driver>postgresqlxa</driver>
+                    <security>
+                        <user-name>admin</user-name>
+                        <password>password</password>
+                    </security>
+                    <validation>
+                        <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLValidConnectionChecker"/>
+                        <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLExceptionSorter"/>
+                    </validation>
+                </xa-datasource>
                 <drivers>
                     <driver name="h2" module="com.h2database.h2">
                         <xa-datasource-class>org.h2.jdbcx.JdbcDataSource</xa-datasource-class>
+                    </driver>
+                    <driver name="postgresql" module="org.postgresql.jdbc">
+                        <xa-datasource-class>org.postgresql.Driver</xa-datasource-class>
+                    </driver>
+                    <driver name="postgresqlxa" module="org.postgresql.jdbc">
+                        <xa-datasource-class>org.postgresql.xa.PGXADataSource</xa-datasource-class>
                     </driver>
                 </drivers>
             </datasources>
