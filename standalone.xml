@@ -139,52 +139,13 @@
                         <password>sa</password>
                     </security>
                 </datasource>
-                <datasource jta="false" jndi-name="java:/jboss/jdbc/ecm" pool-name="ecmDS" enabled="true" use-ccm="true">
-                    <connection-url>jdbc:postgresql://postgres-showcase.jarvis-sit.svc.cluster.local:5432/ecm</connection-url>
-                    <driver-class>org.postgresql.Driver</driver-class>
-                    <driver>postgresql</driver>
-                    <security>
-                        <user-name>ecm</user-name>
-                        <password>ecm</password>
-                    </security>
-                    <validation>
-                        <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLValidConnectionChecker"/>
-                        <background-validation>true</background-validation>
-                        <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLExceptionSorter"/>
-                    </validation>
-                </datasource>
-                <xa-datasource jndi-name="java:jboss/jdbc/showcase" pool-name="PostgresShowcaseXADS">
-                    <xa-datasource-property name="ServerName">
-                        postgres-showcase.jarvis-sit.svc.cluster.local
-                    </xa-datasource-property>
-                    <xa-datasource-property name="PortNumber">
-                        5432
-                    </xa-datasource-property>
-                    <xa-datasource-property name="DatabaseName">
-                        showcase
-                    </xa-datasource-property>
-                    <driver>postgresqlxa</driver>
-                    <security>
-                        <user-name>showcase</user-name>
-                        <password>showcase</password>
-                    </security>
-                    <validation>
-                        <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLValidConnectionChecker"/>
-                        <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLExceptionSorter"/>
-                    </validation>
-                </xa-datasource>
                 <drivers>
                     <driver name="h2" module="com.h2database.h2">
                         <xa-datasource-class>org.h2.jdbcx.JdbcDataSource</xa-datasource-class>
                     </driver>
-                    <driver name="postgresql" module="org.postgresql">
-                        <xa-datasource-class>org.postgresql.Driver</xa-datasource-class>
-                    </driver>
-                    <driver name="postgresqlxa" module="org.postgresql">
-                        <xa-datasource-class>org.postgresql.xa.PGXADataSource</xa-datasource-class>
-                    </driver>
                 </drivers>
             </datasources>
+        </subsystem>
         <subsystem xmlns="urn:jboss:domain:deployment-scanner:2.0">
             <deployment-scanner path="deployments" relative-to="jboss.server.base.dir" scan-interval="5000" runtime-failure-causes-rollback="${jboss.deployment.scanner.rollback.on.failure:false}"/>
         </subsystem>
