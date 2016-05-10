@@ -139,7 +139,7 @@
                         <password>sa</password>
                     </security>
                 </datasource>
-                <datasource jta="false" jndi-name="java:/jboss/datasource/KeycloakDS" pool-name="KeycloakDS" enabled="true" use-ccm="true">
+                <datasource jta="false" jndi-name="java:/jboss/datasources/KeycloakDS" pool-name="KeycloakDS" enabled="true" use-ccm="true">
                     <connection-url>jdbc:postgresql://postgresql-94.centos7.jarvis-sit.svc.cluster.local:5432/oak</connection-url>
                     <driver-class>org.postgresql.Driver</driver-class>
                     <driver>postgresql</driver>
