@@ -20,8 +20,7 @@ RUN cd $HOME && \
 RUN $JBOSS_HOME/bin/add-user.sh admin P@ssw0rd10 --silent
 ADD mongojdbc1.2.jar $JBOSS_HOME/bin/standalone/deployments
 ADD postgresql-9.4.1208.jar $JBOSS_HOME/standalone/deployments  
-ADD apiman-ds.xml $JBOSS_HOME/standalone/configuration
-RUN mv $JBOSS_HOME/standalone/configuration/apiman-ds.xml $JBOSS_HOME/standalone/configuration/keycloak.xml
+ADD standalone.xml $JBOSS_HOME/standalone/configuration
     
 # Ensure signals are forwarded to the JVM process correctly for graceful shutdown
 ENV LAUNCH_JBOSS_IN_BACKGROUND true
