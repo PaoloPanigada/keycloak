@@ -13,6 +13,7 @@ RUN cd $HOME && \
     yum install tar java jdk zip unzip wget curl -y && \
     wget "http://downloads.jboss.org/keycloak/1.9.4.Final/keycloak-1.9.4.Final.tar.gz" && \
     mv keycloak-1.9.4.Final.tar.gz $JBOSS_HOME/keycloak-distro-overlay.tar.gz && \
+    sed -i 's/jboss.bind.address.management:127.0.0.1/jboss.bind.address.management:0.0.0.0/g' /wildfly/standalone/configuration/standalone.xml && \
     cd $JBOSS_HOME && \
     tar zxvf keycloak-distro-overlay.tar.gz && \
     cd $HOME
