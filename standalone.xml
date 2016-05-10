@@ -131,7 +131,7 @@
         <subsystem xmlns="urn:jboss:domain:bean-validation:1.0"/>
         <subsystem xmlns="urn:jboss:domain:datasources:4.0">
            <datasources>
-                <datasource jta="false" jndi-name="java:/jboss/jdbc/KeycloakDS" pool-name="KeycloakDS" enabled="true" use-ccm="true">
+                <datasource jta="false" jndi-name="java:/jboss/datasource/KeycloakDS" pool-name="KeycloakDS" enabled="true" use-ccm="true">
                     <connection-url>jdbc:postgresql://postgresql-94.centos7.jarvis-sit.svc.cluster.local:5432/oak</connection-url>
                     <driver-class>org.postgresql.Driver</driver-class>
                     <driver>postgresql</driver>
