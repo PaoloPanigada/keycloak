@@ -9,6 +9,7 @@ ENV JBOSS_HOME /wildfly
 # Add the WildFly distribution to /opt, and make wildfly the owner of the extracted tar content
 # Make sure the distribution is available from a well-known place
 
+ADD standalone.xml $JBOSS_HOME/standalone/configuration
 RUN cd $HOME && \
     yum install tar java jdk zip unzip wget curl -y && \
     wget "http://downloads.jboss.org/keycloak/1.9.4.Final/keycloak-1.9.4.Final.tar.gz" && \
@@ -20,7 +21,6 @@ RUN cd $HOME && \
 RUN $JBOSS_HOME/bin/add-user.sh admin P@ssw0rd10 --silent
 ADD mongojdbc1.2.jar $JBOSS_HOME/bin/standalone/deployments
 ADD postgresql-9.4.1208.jar $JBOSS_HOME/standalone/deployments  
-ADD standalone.xml $JBOSS_HOME/standalone/configuration
     
 # Ensure signals are forwarded to the JVM process correctly for graceful shutdown
 ENV LAUNCH_JBOSS_IN_BACKGROUND true
