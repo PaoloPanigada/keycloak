@@ -145,26 +145,6 @@
                         <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLExceptionSorter"/>
                     </validation>
                 </datasource>
-                <xa-datasource jndi-name="java:jboss/jdbc/KeycloakDS" pool-name="PostgresoakXADS">
-                    <xa-datasource-property name="ServerName">
-                        postgresql-94.centos7.jarvis-sit.svc.cluster.local
-                    </xa-datasource-property>
-                    <xa-datasource-property name="PortNumber">
-                        5432
-                    </xa-datasource-property>
-                    <xa-datasource-property name="DatabaseName">
-                        oak
-                    </xa-datasource-property>
-                    <driver>postgresqlxa</driver>
-                    <security>
-                        <user-name>admin</user-name>
-                        <password>password</password>
-                    </security>
-                    <validation>
-                        <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLValidConnectionChecker"/>
-                        <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLExceptionSorter"/>
-                    </validation>
-                </xa-datasource>
                 <drivers>
                     <driver name="h2" module="com.h2database.h2">
                         <xa-datasource-class>org.h2.jdbcx.JdbcDataSource</xa-datasource-class>
