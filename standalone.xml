@@ -144,7 +144,7 @@
                     </security>
                 </datasource>
                 <datasource jta="false" jndi-name="java:/jboss/jdbc/ecm" pool-name="ecmDS" enabled="true" use-ccm="true">
-                    <connection-url>jdbc:postgresql://localhost:5432/ecm</connection-url>
+                    <connection-url>jdbc:postgresql://postgres-showcase.jarvis-sit.svc.cluster.local:5432/ecm</connection-url>
                     <driver-class>org.postgresql.Driver</driver-class>
                     <driver>postgresql</driver>
                     <security>
@@ -159,7 +159,7 @@
                 </datasource>
                 <xa-datasource jndi-name="java:jboss/jdbc/showcase" pool-name="PostgresShowcaseXADS">
                     <xa-datasource-property name="ServerName">
-                        localhost
+                        postgres-showcase.jarvis-sit.svc.cluster.local
                     </xa-datasource-property>
                     <xa-datasource-property name="PortNumber">
                         5432
