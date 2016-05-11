@@ -20,6 +20,7 @@ RUN cd $HOME && \
     tar zxvf keycloak-distro-overlay.tar.gz && \
     cd $HOME
 RUN $JBOSS_HOME/keycloak-1.9.4.Final/bin/add-user.sh admin P@ssw0rd10 --silent
+RUN $JBOSS_HOME/keycloak-1.9.4.Final/bin/add-user-keycloak.sh -r master -u admin -p P@ssw0rd10
 ADD mongojdbc1.2.jar $JBOSS_HOME/bin/standalone/deployments
 ADD postgresql-9.4.1208.jar $JBOSS_HOME/standalone/deployments  
     
