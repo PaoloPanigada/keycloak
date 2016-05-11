@@ -1,5 +1,5 @@
 FROM centos:latest
-USER root
+#USER root
 
 # Set the WILDFLY_VERSION env variable
 ENV WILDFLY_VERSION 10.0.0.Final
@@ -11,23 +11,23 @@ ENV JBOSS_KEY $JBOSS_HOME/keycloak-1.9.4.Final
 # Make sure the distribution is available from a well-known place
 
 RUN cd $HOME && \
-    yum install tar java jdk zip unzip wget curl sudo -y && \
+ #   yum install tar java jdk zip unzip wget curl sudo -y && \
     wget "http://downloads.jboss.org/keycloak/1.9.4.Final/keycloak-1.9.4.Final.tar.gz" && \
     mv keycloak-1.9.4.Final.tar.gz keycloak-distro-overlay.tar.gz && \
     tar zxvf keycloak-distro-overlay.tar.gz -C $JBOSS_HOME --strip-components=1 && \
     chmod -R 777 /wildfly && \
     chown -R default:root /wildfly && \ 
     cd $JBOSS_HOME/standalone && \
-    mkdir log && \
-    mkdir data && \
-    mkdir tmp/vfs && \
-    mkdir tmp/vfs/temp && \
-    chmod a+w log && \
-    chown -R 1000050000:root log && \
-    chmod a+w tmp && \
-    chmod a+w data && \
-    chown -R 1000050000:root data && \
-    chmod a+w deployments && \
+  #  mkdir log && \
+  #  mkdir data && \
+   # mkdir tmp/vfs && \
+    #mkdir tmp/vfs/temp && \
+#    chmod a+w log && \
+ #   chown -R 1000050000:root log && \
+ #   chmod a+w tmp && \
+ #   chmod a+w data && \
+ #   chown -R 1000050000:root data && \
+#    chmod a+w deployments && \
     cd $HOME
     
 #RUN $JBOSS_HOME/keycloak-1.9.4.Final/bin/add-user.sh admin P@ssw0rd10 --silent
