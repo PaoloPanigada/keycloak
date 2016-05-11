@@ -15,14 +15,16 @@ RUN cd $HOME && \
     mv keycloak-1.9.4.Final.tar.gz $JBOSS_HOME/keycloak-distro-overlay.tar.gz && \
     cd $JBOSS_HOME && \
     tar zxvf keycloak-distro-overlay.tar.gz && \
+    chmod 777 -r $JBOSS_HOME/keycloak-1.9.4.Final && \
+    mv -f keycloak-1.9.4.Final/* .
     cd $HOME
     
 #RUN $JBOSS_HOME/keycloak-1.9.4.Final/bin/add-user.sh admin P@ssw0rd10 --silent
 ADD mongojdbc1.2.jar $JBOSS_HOME/bin/standalone/deployments
 ADD postgresql-9.4.1208.jar $JBOSS_HOME/standalone/deployments  
-ADD standalone.xml $JBOSS_HOME/keycloak-1.9.4.Final/standalone/configuration
+ADD standalone.xml $JBOSS_HOME/standalone/configuration
 #RUN sed -i 's/jboss.bind.address.management:127.0.0.1/jboss.bind.address.management:0.0.0.0/g' $JBOSS_HOME/keycloak-1.9.4.Final/standalone/configuration/standalone.xml && \
-RUN $JBOSS_HOME/keycloak-1.9.4.Final/bin/add-user-keycloak.sh -r master -u admin -p P@ssw0rd10
+RUN $JBOSS_HOME/bin/add-user-keycloak.sh -r master -u admin -p P@ssw0rd10
     
 # Ensure signals are forwarded to the JVM process correctly for graceful shutdown
 ENV LAUNCH_JBOSS_IN_BACKGROUND true
@@ -32,4 +34,4 @@ EXPOSE 8080 9990
 
 #: For systemd usage this changes to /usr/sbin/init
 # Keeping it as /bin/bash for compatability with previous
-CMD ["/wildfly/keycloak-1.9.4.Final/bin/standalone.sh", "-b", "0.0.0.0"]
+CMD ["/wildfly/bin/standalone.sh", "-b", "0.0.0.0"]
