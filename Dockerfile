@@ -46,5 +46,5 @@ EXPOSE 8080 9990
 
 #: For systemd usage this changes to /usr/sbin/init
 # Keeping it as /bin/bash for compatability with previous
-user root
+#user root
 CMD ["/wildfly/bin/standalone.sh", "-b", "0.0.0.0"]
