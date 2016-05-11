@@ -21,8 +21,8 @@ RUN cd $HOME && \
 ADD mongojdbc1.2.jar $JBOSS_HOME/bin/standalone/deployments
 ADD postgresql-9.4.1208.jar $JBOSS_HOME/standalone/deployments  
 ADD standalone.xml $JBOSS_HOME/keycloak-1.9.4.Final/standalone/configuration
-RUN sed -i 's/jboss.bind.address.management:127.0.0.1/jboss.bind.address.management:0.0.0.0/g' $JBOSS_HOME/keycloak-1.9.4.Final/standalone/configuration/standalone.xml && \
-    $JBOSS_HOME/keycloak-1.9.4.Final/bin/add-user-keycloak.sh -r master -u admin -p P@ssw0rd10
+#RUN sed -i 's/jboss.bind.address.management:127.0.0.1/jboss.bind.address.management:0.0.0.0/g' $JBOSS_HOME/keycloak-1.9.4.Final/standalone/configuration/standalone.xml && \
+RUN $JBOSS_HOME/keycloak-1.9.4.Final/bin/add-user-keycloak.sh -r master -u admin -p P@ssw0rd10
     
 # Ensure signals are forwarded to the JVM process correctly for graceful shutdown
 ENV LAUNCH_JBOSS_IN_BACKGROUND true
