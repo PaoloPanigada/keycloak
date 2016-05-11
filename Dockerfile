@@ -22,10 +22,10 @@ RUN cd $HOME && \
     mkdir tmp/vfs && \
     mkdir tmp/vfs/temp && \
     chmod a+w log && \
-    chmod 1000050000:root log && \
+    chown -R 1000050000:root log && \
     chmod a+w tmp && \
     chmod a+w data && \
-    chmod 1000050000:root data && \
+    chown -R 1000050000:root data && \
     chmod a+w deployments && \
     #chmod 777 -r $JBOSS_HOME/keycloak-1.9.4.Final && \
     cd $HOME
