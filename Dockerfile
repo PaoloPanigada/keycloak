@@ -9,16 +9,17 @@ ENV JBOSS_HOME /wildfly
 # Add the WildFly distribution to /opt, and make wildfly the owner of the extracted tar content
 # Make sure the distribution is available from a well-known place
 
-ADD standalone.xml $JBOSS_HOME/standalone/configuration
+ADD standalone_key.xml $JBOSS_HOME/keycloak-1.9.4.Final/standalone/configuration
 RUN cd $HOME && \
     #yum install tar java jdk zip unzip wget curl -y && \
     wget "http://downloads.jboss.org/keycloak/1.9.4.Final/keycloak-1.9.4.Final.tar.gz" && \
     mv keycloak-1.9.4.Final.tar.gz $JBOSS_HOME/keycloak-distro-overlay.tar.gz && \
-    sed -i 's/jboss.bind.address.management:127.0.0.1/jboss.bind.address.management:0.0.0.0/g' /wildfly/standalone/configuration/standalone.xml && \
+    mv -f $JBOSS_HOME/keycloak-1.9.4.Final/standalone/configuration/standalone_key.xml $JBOSS_HOME/keycloak-1.9.4.Final/standalone/configuration/standalone.xml && \
+    sed -i 's/jboss.bind.address.management:127.0.0.1/jboss.bind.address.management:0.0.0.0/g' /wildfly/keycloak-1.9.4.Final/standalone/configuration/standalone.xml && \
     cd $JBOSS_HOME && \
     tar zxvf keycloak-distro-overlay.tar.gz && \
     cd $HOME
-RUN $JBOSS_HOME/bin/add-user.sh admin P@ssw0rd10 --silent
+RUN $JBOSS_HOME/keycloak-1.9.4.Final/bin/add-user.sh admin P@ssw0rd10 --silent
 ADD mongojdbc1.2.jar $JBOSS_HOME/bin/standalone/deployments
 ADD postgresql-9.4.1208.jar $JBOSS_HOME/standalone/deployments  
     
@@ -30,4 +31,4 @@ EXPOSE 8080 9990
 
 #: For systemd usage this changes to /usr/sbin/init
 # Keeping it as /bin/bash for compatability with previous
-CMD ["/wildfly/bin/standalone.sh", "-b", "0.0.0.0"]
+CMD ["/wildfly/keycloak-1.9.4.Final/bin/standalone.sh", "-b", "0.0.0.0"]
