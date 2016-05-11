@@ -14,7 +14,7 @@ RUN cd $HOME && \
     #yum install tar java jdk zip unzip wget curl -y && \
     wget "http://downloads.jboss.org/keycloak/1.9.4.Final/keycloak-1.9.4.Final.tar.gz" && \
     mv keycloak-1.9.4.Final.tar.gz $JBOSS_HOME/keycloak-distro-overlay.tar.gz && \
-    mv -f $JBOSS_HOME/keycloak-1.9.4.Final/standalone/configuration/standalone_key.xml $JBOSS_HOME/keycloak-1.9.4.Final/standalone/configuration/standalone.xml && \
+    cp $JBOSS_HOME/keycloak-1.9.4.Final/standalone/configuration/standalone_key.xml $JBOSS_HOME/keycloak-1.9.4.Final/standalone/configuration/standalone.xml && \
     sed -i 's/jboss.bind.address.management:127.0.0.1/jboss.bind.address.management:0.0.0.0/g' /wildfly/keycloak-1.9.4.Final/standalone/configuration/standalone.xml && \
     cd $JBOSS_HOME && \
     tar zxvf keycloak-distro-overlay.tar.gz && \
