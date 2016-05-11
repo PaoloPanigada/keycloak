@@ -14,7 +14,7 @@ RUN cd $HOME && \
  #   yum install tar java jdk zip unzip wget curl sudo -y && \
     wget "http://downloads.jboss.org/keycloak/1.9.4.Final/keycloak-overlay-1.9.4.Final.tar.gz" && \
     mv keycloak-1.9.4.Final.tar.gz keycloak-distro-overlay.tar.gz && \
-    tar zxvf keycloak-distro-overlay.tar.gz -C $JBOSS_HOME --strip-components=1 && \
+    tar zxvf keycloak-overlay-1.9.4.Final.tar.gz -C $JBOSS_HOME --strip-components=1 && \
     chmod -R 777 /wildfly && \
     chown -R default:root /wildfly && \ 
     cd $JBOSS_HOME/standalone && \
