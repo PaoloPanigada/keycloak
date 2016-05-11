@@ -15,7 +15,7 @@ RUN cd $HOME && \
     mv keycloak-1.9.4.Final.tar.gz $JBOSS_HOME/keycloak-distro-overlay.tar.gz && \
     cd $JBOSS_HOME && \
     tar zxvf keycloak-distro-overlay.tar.gz && \
-    chmod 777 -r $JBOSS_HOME/keycloak-1.9.4.Final && \
+    #chmod 777 -r $JBOSS_HOME/keycloak-1.9.4.Final && \
     mv -f keycloak-1.9.4.Final/* .
     cd $HOME
     
