@@ -18,10 +18,10 @@ RUN cd $HOME && \
     cd $JBOSS_HOME/standalone && \
     mkdir log && \
     mkdir data && \
-    mkdir tmp && \
     mkdir tmp/vfs && \
     mkdir tmp/vfs/temp && \
     chmod a+w log && \
+    chmod a+w tmp && \
     chmod a+w data && \
     chmod a+w deployments && \
     #chmod 777 -r $JBOSS_HOME/keycloak-1.9.4.Final && \
