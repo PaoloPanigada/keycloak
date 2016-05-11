@@ -17,16 +17,16 @@ RUN cd $HOME && \
     tar zxvf keycloak-distro-overlay.tar.gz -C $JBOSS_HOME --strip-components=1 && \
     chown -R default:root /wildfly && \ 
     cd $JBOSS_HOME/standalone && \
-    mkdir log && \
-    mkdir data && \
-    mkdir tmp/vfs && \
-    mkdir tmp/vfs/temp && \
-    chmod a+w log && \
-    chown -R 1000050000:root log && \
-    chmod a+w tmp && \
-    chmod a+w data && \
-    chown -R 1000050000:root data && \
-    chmod a+w deployments && \
+    #mkdir log && \
+    #mkdir data && \
+    #mkdir tmp/vfs && \
+    #mkdir tmp/vfs/temp && \
+    #chmod a+w log && \
+    #chown -R 1000050000:root log && \
+    #chmod a+w tmp && \
+    #chmod a+w data && \
+    #chown -R 1000050000:root data && \
+    #chmod a+w deployments && \
     #chmod 777 -r $JBOSS_HOME/keycloak-1.9.4.Final && \
     cd $HOME
     
