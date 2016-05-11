@@ -15,6 +15,7 @@ RUN cd $HOME && \
     wget "http://downloads.jboss.org/keycloak/1.9.4.Final/keycloak-1.9.4.Final.tar.gz" && \
     mv keycloak-1.9.4.Final.tar.gz keycloak-distro-overlay.tar.gz && \
     tar zxvf keycloak-distro-overlay.tar.gz -C $JBOSS_HOME --strip-components=1 && \
+    chown -R root:root / && \ 
     cd $JBOSS_HOME/standalone && \
     mkdir log && \
     mkdir data && \
