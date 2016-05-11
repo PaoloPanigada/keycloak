@@ -21,7 +21,6 @@ RUN cd $HOME && \
     mkdir data && \
     mkdir tmp/vfs && \
     mkdir tmp/vfs/temp && \
-    chown -R 1000:1000 tmp/vfs/temp && \
     chmod a+w log && \
     chmod a+w tmp && \
     chmod a+w data && \
