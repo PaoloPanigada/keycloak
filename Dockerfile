@@ -16,14 +16,15 @@ RUN cd $HOME && \
     mv keycloak-1.9.4.Final.tar.gz keycloak-distro-overlay.tar.gz && \
     tar zxvf keycloak-distro-overlay.tar.gz -C $JBOSS_HOME --strip-components=1 && \
     cd $JBOSS_HOME/standalone && \
-    #mkdir log && \
-    #mkdir data && \
-    #mkdir tmp/vfs && \
-    #mkdir tmp/vfs/temp && \
-    #chmod a+w log && \
-    #chmod a+w tmp && \
-    #chmod a+w data && \
-    #chmod a+w deployments && \
+    mkdir log && \
+    mkdir data && \
+    mkdir tmp/vfs && \
+    mkdir tmp/vfs/temp && \
+    chown -R 1000:1000 tmp/vfs/temp && \
+    chmod a+w log && \
+    chmod a+w tmp && \
+    chmod a+w data && \
+    chmod a+w deployments && \
     #chmod 777 -r $JBOSS_HOME/keycloak-1.9.4.Final && \
     cd $HOME
     
