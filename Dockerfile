@@ -18,6 +18,9 @@ RUN cd $HOME && \
     cd $JBOSS_HOME/standalone && \
     mkdir log && \
     mkdir data && \
+    mkdir tmp && \
+    mkdir tmp/vfs && \
+    mkdir tmp/vfs/temp && \
     chmod a+w log && \
     chmod a+w data && \
     chmod a+w deployments && \
