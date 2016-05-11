@@ -1,4 +1,5 @@
 FROM centos:latest
+USER root
 
 # Set the WILDFLY_VERSION env variable
 ENV WILDFLY_VERSION 10.0.0.Final
@@ -14,7 +15,8 @@ RUN cd $HOME && \
     wget "http://downloads.jboss.org/keycloak/1.9.4.Final/keycloak-1.9.4.Final.tar.gz" && \
     mv keycloak-1.9.4.Final.tar.gz keycloak-distro-overlay.tar.gz && \
     tar zxvf keycloak-distro-overlay.tar.gz -C $JBOSS_HOME --strip-components=1 && \
-    chown -R default:root /wildfly && \ 
+    chmod 777 -r /wildfly && \
+    #chown -R default:root /wildfly && \ 
     cd $JBOSS_HOME/standalone && \
     mkdir log && \
     mkdir data && \
@@ -26,7 +28,6 @@ RUN cd $HOME && \
     chmod a+w data && \
     chown -R 1000050000:root data && \
     chmod a+w deployments && \
-    chmod 777 -r $JBOSS_HOME/keycloak-1.9.4.Final && \
     cd $HOME
     
 #RUN $JBOSS_HOME/keycloak-1.9.4.Final/bin/add-user.sh admin P@ssw0rd10 --silent
