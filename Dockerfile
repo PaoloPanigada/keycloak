@@ -11,12 +11,12 @@ ENV JBOSS_KEY $JBOSS_HOME/keycloak-1.9.4.Final
 # Make sure the distribution is available from a well-known place
 
 RUN cd $HOME && \
-    yum install tar java jdk zip unzip wget curl -y && \
+    yum install tar java jdk zip unzip wget curl sudo -y && \
     wget "http://downloads.jboss.org/keycloak/1.9.4.Final/keycloak-1.9.4.Final.tar.gz" && \
     mv keycloak-1.9.4.Final.tar.gz keycloak-distro-overlay.tar.gz && \
     tar zxvf keycloak-distro-overlay.tar.gz -C $JBOSS_HOME --strip-components=1 && \
     chmod -R 777 /wildfly && \
-    #chown -R default:root /wildfly && \ 
+    chown -R default:root /wildfly && \ 
     cd $JBOSS_HOME/standalone && \
     mkdir log && \
     mkdir data && \
@@ -46,4 +46,5 @@ EXPOSE 8080 9990
 
 #: For systemd usage this changes to /usr/sbin/init
 # Keeping it as /bin/bash for compatability with previous
+user root
 CMD ["/wildfly/bin/standalone.sh", "-b", "0.0.0.0"]
